@@ -1,0 +1,5 @@
+- job_name: 'AcrHandler-Actuator'
+    metrics_path: 'acrhandler/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+    - targets: ['127.0.0.1:8010']
