@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-cloud-task-demo
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloudschema?useSSL=false
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  batch:
+    initialize-schema: always
+maven:
+  remoteRepositories:
+    springRepo:
+      url: https://repo.spring.io/libs-snapshot
