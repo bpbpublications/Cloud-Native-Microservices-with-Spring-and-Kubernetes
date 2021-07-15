@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: customer-management-service
+  namespace: onlinestore-demo
+spec:
+  ports:
+  - port: 8011
+    protocol: TCP
+    targetPort: 8011
+  selector:
+    app: customer-management-service-app
+  sessionAffinity: None
+  type: ClusterIP #internal IPs withing K8s cluster,exposed to external IP with Ingress Load balancer service
+status:
+  loadBalancer: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-management-app-deployment
+  namespace: onlinestore-demo
+spec:
+  selector:
+    matchLabels:
+      app: customer-management-service-app
+  replicas: 3 # tells deployment to run 3 pods matching the template
+  template: # create pods using pod definition in this template
+    metadata:
+      labels:
+        app: customer-management-service-app
+    spec:
+      containers:
+      - name: customer-management-service-app
+        image: itsrajivsrivastava/customer-management-service
+        ports:
+        - containerPort: 8011
+          name: server
+      imagePullSecrets: # Only required with private image repository like Harbor,jFrog etc
+        - name: regcred

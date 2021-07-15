@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: springboot-demo-ingress
+spec:
+  rules:
+  - host: demo.my-pks.cloudification.in
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: spring-boot-service-clusterip
+          servicePort: 8080

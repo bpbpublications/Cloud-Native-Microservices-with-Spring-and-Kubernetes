@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: catalogue-service
+  jpa:
+    hibernate:
+      ddl-auto: update
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: '*'
+server:
+  port : 8010
+springdoc:
+  api-docs:
+    path: /docs
+  swagger-ui:
+    path: /swagger

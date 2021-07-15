@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: order-service
+server:
+  port : 8012
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: '*'
+        
+catalogue:
+  resource:
+    host: ${CATALOGUE_HOST:localhost} #Catalogue Micro-Service
+    port: ${CATALOGUE_PORT:8010}
+customer:
+  resource:
+    host:  ${CUSTOMER_HOST:localhost} #Customers  Micro-Service
+    port: ${CUSTOMER_PORT:8011}

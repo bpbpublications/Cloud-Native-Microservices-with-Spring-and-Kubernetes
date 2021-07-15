@@ -1,0 +1,19 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: spring-config-server-cloud-demo
+  jmx:
+    default_domain: cloud.config.server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rajivmca2004/client-config
+          force-pull: true
+          deleteUntrackedBranches: true
+management:
+  endpoint:
+    health:
+      show-details: always
