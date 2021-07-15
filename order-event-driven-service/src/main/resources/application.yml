@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: order-event-driven-service
+  cloud:
+    stream:
+      default-binder: kafka
+      kafka:
+        binder:
+          brokers: localhost:9092
+      bindings:
+        event-producer:
+          destination: order_topic
+          contentType: application/json
+server:
+  port : 9001
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: '*'
