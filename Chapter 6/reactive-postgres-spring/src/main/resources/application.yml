@@ -1,0 +1,32 @@
+spring:
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+server:
+  port : 8080
+springdoc:
+  api-docs:
+    path: /docs
+  swagger-ui:
+    path: /swagger
+---
+spring:
+  profiles: dev
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: password
+logging:
+  level:
+    org.springframework.data.r2dbc: Debug
+---
+spring:
+  profiles: test
+  r2dbc:
+    url: r2dbc:h2:mem:///test?options=DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    name: sa
+    password:
