@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: product-service-spring
+  cloud:
+    config:
+      uri: http://localhost:8888
+  profiles:
+    active: development
+  jpa:
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+server:
+  port : 9010
+springdoc:
+  api-docs:
+    path: /docs
+  swagger-ui:
+    path: /swagger
